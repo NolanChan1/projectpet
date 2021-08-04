@@ -8,5 +8,3 @@ class InputController:
         GPIO.setwarnings(False)
         
     
-    def setup_gpio
-    

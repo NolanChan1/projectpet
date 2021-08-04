@@ -1,5 +1,6 @@
 import config
-import DisplayController
+import DisplayController as DisplayController
+import InputController as InputController
 
 import board
 import busio

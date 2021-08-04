@@ -1,4 +1,5 @@
 from SpriteData import SpriteData
+from Screen import Screen
 
 import time
 import busio

@@ -1,10 +1,10 @@
 #Configuration file for ProjectPet
 
 #BCM pin numbers for GPIO button and buzzer pins
-BUTTON1_PIN = 25
-BUTTON2_PIN = 8
-BUTTON3_PIN = 7
-BUTTON4_PIN = 1
+BUTTON1_PIN = 26
+BUTTON2_PIN = 6
+BUTTON3_PIN = 5
+BUTTON4_PIN = 25
 
 BUZZER_PIN = 12
 

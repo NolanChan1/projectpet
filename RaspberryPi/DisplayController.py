@@ -23,7 +23,7 @@ class DisplayController:
         self.screens = []
         for i in range(0, self.screen_count):
             self.screens.append(Screen(width, height))
-            self.screens[i].draw_text.(i, self.oled_font)
+            self.screens[i].draw_text(i, self.oled_font)
         
         
         #Clear contents on OLED display
@@ -45,7 +45,11 @@ class DisplayController:
                 animation_frame = 0
 
             current_frame = self.sprite_data.get_frame(self.curr_mood, animation_frame).copy()
-            current_screen.paste(current_frame, box=(96,0))
+            if (current_screen_num % 2 == 0):
+                current_screen.paste(current_frame, box=(96,0))
+            else:
+                current_screen.paste(current_frame, box=(0,0))
+            
             
             self.oled_display.image(current_screen)
             self.oled_display.show()

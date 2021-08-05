@@ -7,7 +7,7 @@ class SpriteData:
         self.pet_normal_sprites = []
         
         for i in range(0, anim_count):
-            img_fp = sprite_fp + "pet_normal" + i + ".pbm"
+            img_fp = sprite_fp + "pet_normal" + str(i) + ".pbm"
             img = Image.open(img_fp)
             self.pet_normal_sprites.append(img)
             

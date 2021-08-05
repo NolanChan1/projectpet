@@ -8,3 +8,5 @@ class InputController:
         GPIO.setwarnings(False)
         
     
+    def cleanup(self):
+        GPIO.cleanup()

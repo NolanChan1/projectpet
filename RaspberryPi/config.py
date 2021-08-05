@@ -20,3 +20,5 @@ SPRITE_FP = "assets/"
 
 #Number of pet sprites per animation cycle
 ANIMATION_COUNT = 8
+
+SCREEN_COUNT = 6

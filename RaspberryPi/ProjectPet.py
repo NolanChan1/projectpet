@@ -15,7 +15,7 @@ def main():
     global input_ctrl
 
     i2c = busio.I2C(board.SCL, board.SDA)
-    disp_ctrl = DisplayController(i2c, config.OLED_WIDTH, config.OLED_HEIGHT, config.FONT_FP, config.SPRITE_FP, config.ANIMATION_COUNT)
+    disp_ctrl = DisplayController(i2c, config.OLED_WIDTH, config.OLED_HEIGHT, config.FONT_FP, config.SPRITE_FP, config.ANIMATION_COUNT, config.SCREEN_COUNT)
     input_ctrl = InputController(disp_ctrl)
 
     signal.signal(signal.SIGINT, signal_handler)

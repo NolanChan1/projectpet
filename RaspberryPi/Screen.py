@@ -36,3 +36,25 @@ class Screen:
             self.screen_draw.text((33, 6), "VERSION: ALPHA", font=screen_font, fill=255)
             self.screen_draw.text((33, 14), "github.com/Nolan", font=screen_font, fill=255)
             self.screen_draw.text((33, 22), "Chan1/projectpet", font=screen_font, fill=255)
+    
+    def print_stats(self, screen_type, stats):
+        if screen_type == 0:
+            filled_hungerbars = int(stats[0]/10)
+            filled_happybars = int(stats[1]/10)
+            
+            total_hungerbars = 9
+            total_happybars = 6
+            
+            for i in range(0, filled_hungerbars):
+                self.screen_draw.rounded_rectangle((40 + i*7, 0, 45 + i*7, 7), radius=1, outline=255, fill=255)
+                total_hungerbars -= 1
+                
+            for i in range(0, total_hungerbars):
+                self.screen_draw.rounded_rectangle((96 - i*7, 0, 101 - i*7, 7), radius=1, outline=255, fill=0)
+                
+            for i in range(0, filled_happybars):
+                self.screen_draw.arc((60 + i*6, 8, 66 + i*6, 15), 0, 360, fill=255, width=1)
+                total_happybars -= 1
+                
+            for i in range(0, total_happybars):
+                self.screen_draw.arc((90 - i*6, 8, 96 - i*6, 15), 0, 360, fill=0, width=1)

@@ -1,6 +1,7 @@
 import config
 from DisplayController import DisplayController
 from InputController import InputController
+from SaveData import SaveData
 
 import board
 import busio
@@ -13,10 +14,12 @@ input_ctrl = None
 def main():
     global disp_ctrl
     global input_ctrl
-
+    
+    
+    save = SaveData()
     i2c = busio.I2C(board.SCL, board.SDA)
     disp_ctrl = DisplayController(i2c, config.OLED_WIDTH, config.OLED_HEIGHT, config.FONT_FP, config.SPRITE_FP, config.ANIMATION_COUNT, config.SCREEN_COUNT)
-    input_ctrl = InputController(disp_ctrl)
+    input_ctrl = InputController(disp_ctrl, save)
 
     signal.signal(signal.SIGINT, signal_handler)
 

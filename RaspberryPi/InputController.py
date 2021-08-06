@@ -21,10 +21,14 @@ def button3_pressed(channel):
     disp_ctrl.change_mood()
 
 class InputController:
-    def __init__(self, dctrl):
+    def __init__(self, dctrl, save):
         global disp_ctrl
 
         disp_ctrl = dctrl
+        self.save_data = save
+        
+        disp_ctrl.update_stats(self.save_data.get_curr_stats())
+        
         GPIO.setmode(GPIO.BCM)
         GPIO.setwarnings(False)
 

@@ -74,5 +74,5 @@ class DisplayController:
         else:
             self.curr_mood = 0
             
-    def update_stats(stats):
+    def update_stats(self, stats):
         self.screens[self.curr_screen_num].print_stats(self.curr_screen_num, stats)

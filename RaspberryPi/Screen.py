@@ -46,15 +46,15 @@ class Screen:
             total_happybars = 6
             
             for i in range(0, filled_hungerbars):
-                self.screen_draw.rounded_rectangle((40 + i*7, 0, 45 + i*7, 7), radius=1, outline=255, fill=255)
+                self.screen_draw.rounded_rectangle((40 + i*6, 0, 44 + i*6, 6), radius=1, outline=255, fill=255)
                 total_hungerbars -= 1
                 
             for i in range(0, total_hungerbars):
-                self.screen_draw.rounded_rectangle((96 - i*7, 0, 101 - i*7, 7), radius=1, outline=255, fill=0)
+                self.screen_draw.rounded_rectangle((88 - i*6, 0, 92 - i*6, 6), radius=1, outline=255, fill=0)
                 
             for i in range(0, filled_happybars):
-                self.screen_draw.arc((60 + i*6, 8, 66 + i*6, 15), 0, 360, fill=255, width=1)
+                self.screen_draw.ellipse((54 + i*7, 9, 59 + i*7, 14), outline=255, fill=255, width=1)
                 total_happybars -= 1
                 
             for i in range(0, total_happybars):
-                self.screen_draw.arc((90 - i*6, 8, 96 - i*6, 15), 0, 360, fill=0, width=1)
+                self.screen_draw.ellipse((89 - i*7, 9, 94 - i*7, 14), outline=255, fill=0, width=1)

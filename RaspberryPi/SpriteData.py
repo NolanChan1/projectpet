@@ -39,4 +39,4 @@ class SpriteData:
             
     def get_misc_sprites(self, screen):
         if screen == 0:
-            return [self.happinessbar_empty, self.happinessbar_full, self.food_salad, self.food_candy]
+            return [self.happinessbar_full, self.happinessbar_empty, self.food_salad, self.food_candy]

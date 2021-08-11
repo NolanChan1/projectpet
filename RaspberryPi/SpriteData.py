@@ -10,6 +10,12 @@ class SpriteData:
         self.pet_sick_sprite = Image.open(sprite_fp + "pet_sick.pbm")
         self.pet_dead_sprite = Image.open(sprite_fp + "pet_dead.pbm")
         
+        self.happinessbar_empty = Image.open(sprite_fp + "happinessbar_empty.pbm")
+        self.happinessbar_full = Image.open(sprite_fp + "happinessbar_full.pbm")
+        self.food_salad = Image.open(sprite_fp + "food_salad0.pbm")
+        self.food_candy = Image.open(sprite_fp + "food_candy0.pbm")
+        self.pet_child = Image.open(sprite_fp + "pet_child0.pbm")
+        
         for i in range(0, anim_count):
             nimg_fp = sprite_fp + "pet_normal" + str(i) + ".pbm"
             nimg = Image.open(nimg_fp)
@@ -30,3 +36,7 @@ class SpriteData:
             return self.pet_sick_sprite
         elif mood == 12:
             return self.pet_dead_sprite
+            
+    def get_misc_sprites(self, screen):
+        if screen == 0:
+            return [self.happinessbar_empty, self.happinessbar_full, self.food_salad, self.food_candy]

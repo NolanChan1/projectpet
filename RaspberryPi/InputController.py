@@ -5,6 +5,7 @@ import time
 import config
 
 disp_ctrl = None
+save_data = None
 
 def button1_pressed(channel):
     global disp_ctrl
@@ -12,22 +13,23 @@ def button1_pressed(channel):
     long_press = 2
     start_time = time.time()
     
-    while GPIO.input(channel) == 0:
+    while GPIO.input(channel) == 0 and (time.time() - start_time) < 1:
         pass
         
     press_time = time.time() - start_time
     
-    if 0.25 <= press_time < 2:
+    if 0.25 <= press_time < 1:
         long_press = 0
-    elif press_time >= 2:
+    elif press_time >= 1:
         long_press = 1
         
     if long_press == 0:
         pass
+        print("TEST1")
     elif long_press == 1:
         disp_ctrl.change_screen(1)
         
-    disp_ctrl.update_stats(self.save_data.get_curr_stats())
+    disp_ctrl.update_stats(save_data.get_curr_stats())
     
 def button2_pressed(channel):
     global disp_ctrl
@@ -35,22 +37,23 @@ def button2_pressed(channel):
     long_press = 2
     start_time = time.time()
     
-    while GPIO.input(channel) == 0:
+    while GPIO.input(channel) == 0 and (time.time() - start_time) < 1:
         pass
         
     press_time = time.time() - start_time
     
-    if 0.25 <= press_time < 2:
+    if 0.25 <= press_time < 1:
         long_press = 0
-    elif press_time >= 2:
+    elif press_time >= 1:
         long_press = 1
         
     if long_press == 0:
         pass
+        print("TEST2")
     elif long_press == 1:
         disp_ctrl.change_screen(-1)
     
-    disp_ctrl.update_stats(self.save_data.get_curr_stats())
+    disp_ctrl.update_stats(save_data.get_curr_stats())
     
 def button3_pressed(channel):
     global disp_ctrl
@@ -60,11 +63,12 @@ def button3_pressed(channel):
 class InputController:
     def __init__(self, dctrl, save):
         global disp_ctrl
+        global save_data
 
         disp_ctrl = dctrl
-        self.save_data = save
+        save_data = save
         
-        disp_ctrl.update_stats(self.save_data.get_curr_stats())
+        disp_ctrl.update_stats(save_data.get_curr_stats())
         
         GPIO.setmode(GPIO.BCM)
         GPIO.setwarnings(False)

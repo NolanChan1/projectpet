@@ -82,19 +82,19 @@ class Screen:
             bank_acc = str(round(stats[4], 2))
             
             for i in range(0, saladbars):
-                self.screen_img.paste(misc_sprites[0], box=(32 + i*8, 0))
+                self.screen_img.paste(misc_sprites[0], box=(65 + i*8, 0))
                 
             for i in range(0, candybars):
-                self.screen_img.paste(misc_sprites[1], box=(32 + i*7, 8))
+                self.screen_img.paste(misc_sprites[1], box=(65 + i*7, 8))
                 
-            self.screen_draw.text((62, 22), "$ " + bank_acc, font=screen_font, fill=255)
+            self.screen_draw.text((65, 22), "$ " + bank_acc, font=screen_font, fill=255)
         elif screen_type == 2:
             medicinebars = stats[7]
             
             bank_acc = str(round(stats[4], 2))
             
             for i in range(0, medicinebars):
-                self.screen_img.paste(misc_sprites[0], box=(40 + i*5, 16))
+                self.screen_img.paste(misc_sprites[0], box=(46 + i*6, 16))
                 
             self.screen_draw.text((32, 22), "$ " + bank_acc, font=screen_font, fill=255)
         elif screen_type == 3:

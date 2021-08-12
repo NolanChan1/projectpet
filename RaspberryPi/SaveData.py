@@ -20,7 +20,7 @@ class SaveData:
     def get_curr_stats(self):
         tmp_df = self.save_df.tail(1)
         tmp_series = tmp_df.squeeze()
-        tmp_list = [tmp_series['HUNGER'], tmp_series['HAPPINESS'], tmp_series['SALAD'], tmp_series['CANDY'], tmp_series['BANK'], tmp_series['SICK'], tmp_series['RECOVERY'], tmp_series['MEDICINE'], tmp_series['CHILDREN'], tmp_series['CHILD_INC'], tmp_series['DISCIPLINE'], tmp_series['BASEWAGE'], tmp_series['BASEMARKET'], tmp_series['AGE'], tmp_series['DAYS']]
+        tmp_list = [int(tmp_series['HUNGER']), int(tmp_series['HAPPINESS']), int(tmp_series['SALAD']), int(tmp_series['CANDY']), tmp_series['BANK'], int(tmp_series['SICK']), int(tmp_series['RECOVERY']), int(tmp_series['MEDICINE']), int(tmp_series['CHILDREN']), int(tmp_series['CHILD_INC']), int(tmp_series['DISCIPLINE']), tmp_series['BASEWAGE'], tmp_series['BASEMARKET'], int(tmp_series['AGE']), int(tmp_series['DAYS'])]
         
         return tmp_list
             

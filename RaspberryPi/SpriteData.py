@@ -14,7 +14,7 @@ class SpriteData:
         self.happinessbar_full = Image.open(sprite_fp + "happinessbar_full.pbm")
         self.food_salad = Image.open(sprite_fp + "food_salad0.pbm")
         self.food_candy = Image.open(sprite_fp + "food_candy0.pbm")
-        self.pet_child = Image.open(sprite_fp + "pet_child0.pbm")
+        self.pet_child = Image.open(sprite_fp + "pet_child1.pbm")
         self.medicine_pill = Image.open(sprite_fp + "medicine_pill.pbm")
         
         for i in range(0, anim_count):

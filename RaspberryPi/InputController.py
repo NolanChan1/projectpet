@@ -1,5 +1,6 @@
 
 import RPi.GPIO as GPIO
+import time
 
 import config
 
@@ -8,12 +9,48 @@ disp_ctrl = None
 def button1_pressed(channel):
     global disp_ctrl
     
-    disp_ctrl.change_screen(-1)
+    long_press = 2
+    start_time = time.time()
+    
+    while GPIO.input(channel) == 0:
+        pass
+        
+    press_time = time.time() - start_time
+    
+    if 0.25 <= press_time < 2:
+        long_press = 0
+    elif press_time >= 2:
+        long_press = 1
+        
+    if long_press == 0:
+        pass
+    elif long_press == 1:
+        disp_ctrl.change_screen(1)
+        
+    disp_ctrl.update_stats(self.save_data.get_curr_stats())
     
 def button2_pressed(channel):
     global disp_ctrl
     
-    disp_ctrl.change_screen(1)
+    long_press = 2
+    start_time = time.time()
+    
+    while GPIO.input(channel) == 0:
+        pass
+        
+    press_time = time.time() - start_time
+    
+    if 0.25 <= press_time < 2:
+        long_press = 0
+    elif press_time >= 2:
+        long_press = 1
+        
+    if long_press == 0:
+        pass
+    elif long_press == 1:
+        disp_ctrl.change_screen(-1)
+    
+    disp_ctrl.update_stats(self.save_data.get_curr_stats())
     
 def button3_pressed(channel):
     global disp_ctrl

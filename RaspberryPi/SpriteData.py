@@ -15,6 +15,7 @@ class SpriteData:
         self.food_salad = Image.open(sprite_fp + "food_salad0.pbm")
         self.food_candy = Image.open(sprite_fp + "food_candy0.pbm")
         self.pet_child = Image.open(sprite_fp + "pet_child0.pbm")
+        self.medicine_pill = Image.open(sprite_fp + "medicine_pill.pbm")
         
         for i in range(0, anim_count):
             nimg_fp = sprite_fp + "pet_normal" + str(i) + ".pbm"
@@ -40,3 +41,9 @@ class SpriteData:
     def get_misc_sprites(self, screen):
         if screen == 0:
             return [self.happinessbar_full, self.happinessbar_empty, self.food_salad, self.food_candy]
+        elif screen == 1:
+            return [self.food_salad, self.food_candy]
+        elif screen == 2:
+            return [self.medicine_pill]
+        elif screen == 3:
+            return [self.pet_child]

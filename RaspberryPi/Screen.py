@@ -37,7 +37,7 @@ class Screen:
             self.screen_draw.text((33, 14), "github.com/Nolan", font=screen_font, fill=255)
             self.screen_draw.text((33, 22), "Chan1/projectpet", font=screen_font, fill=255)
     
-    def print_stats(self, screen_type, stats, misc_sprites):
+    def print_stats(self, screen_type, stats, misc_sprites, screen_font):
         if screen_type == 0:
             filled_hungerbars = int(stats[0]/10)
             filled_happybars = int(stats[1]/10)
@@ -75,3 +75,31 @@ class Screen:
             for i in range(0, total_happybars):
                 self.screen_draw.ellipse((89 - i*7, 9, 94 - i*7, 14), outline=255, fill=0, width=1)
             """
+        elif screen_type == 1:
+            saladbars = stats[2]
+            candybars = stats[3]
+            
+            bank_acc = str(round(stats[4], 2))
+            
+            for i in range(0, saladbars):
+                self.screen_img.paste(misc_sprites[0], box=(32 + i*8, 0))
+                
+            for i in range(0, candybars):
+                self.screen_img.paste(misc_sprites[1], box=(32 + i*7, 8))
+                
+            self.screen_draw.text((62, 22), "$ " + bank_acc, font=screen_font, fill=255)
+        elif screen_type == 2:
+            medicinebars = stats[7]
+            
+            bank_acc = str(round(stats[4], 2))
+            
+            for i in range(0, medicinebars):
+                self.screen_img.paste(misc_sprites[0], box=(40 + i*5, 16))
+                
+            self.screen_draw.text((32, 22), "$ " + bank_acc, font=screen_font, fill=255)
+        elif screen_type == 3:
+            childrenbars = stats[8]
+            
+            for i in range(0, childrenbars):
+                self.screen_img.paste(misc_sprites[0], box=(82 + i*10, 0))
+            

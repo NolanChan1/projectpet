@@ -56,11 +56,11 @@ class Screen:
                 self.screen_draw.rounded_rectangle((88 - i*6, 0, 92 - i*6, 6), radius=1, outline=255, fill=0)
             
             for i in range(0, filled_happybars):
-                self.screen_img.paste(misc_sprites[0], box=(53 + i*7, 8))
+                self.screen_img.paste(misc_sprites[0], box=(55 + i*6, 8))
                 total_happybars -= 1
                 
             for i in range(0, total_happybars):
-                self.screen_img.paste(misc_sprites[1], box=(88 - i*7, 8))
+                self.screen_img.paste(misc_sprites[1], box=(85 - i*6, 8))
                 
             for i in range(0, saladbars):
                 self.screen_img.paste(misc_sprites[2], box=(32 + i*8, 16))

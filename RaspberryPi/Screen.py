@@ -101,5 +101,5 @@ class Screen:
             childrenbars = stats[8]
             
             for i in range(0, childrenbars):
-                self.screen_img.paste(misc_sprites[0], box=(82 + i*10, 0))
+                self.screen_img.paste(misc_sprites[0], box=(83 + i*10, 0))
             

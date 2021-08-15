@@ -25,8 +25,8 @@ SCREEN_COUNT = 6
 
 SAVE_FP = "saves/pet_save.csv"
 
-MUSIC_FP = "music/overture.txt"
-TEMPO = 0.3
+MUSIC_FP = "assets/music/overture.txt"
+TEMPO = 2
 
 START_HUNGER = 50
 START_HAPPINESS = 50

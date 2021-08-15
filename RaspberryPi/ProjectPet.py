@@ -24,11 +24,13 @@ def main():
     disp_ctrl = DisplayController(i2c, config.OLED_WIDTH, config.OLED_HEIGHT, config.FONT_FP, config.SPRITE_FP, config.ANIMATION_COUNT, config.SCREEN_COUNT)
     input_ctrl = InputController(disp_ctrl, save)
 
-    music_player = MusicPlayer.MusicPlayer()
-
+    music_player1 = MusicPlayer.MusicPlayer(config.MUSIC_FP1, config.TEMPO, config.BUZZER1_PIN)
+    music_player2 = MusicPlayer.MusicPlayer(config.MUSIC_FP2, config.TEMPO, config.BUZZER2_PIN)
+    
     signal.signal(signal.SIGINT, signal_handler)
 
-    music_player.start()
+    music_player1.start()
+    music_player2.start()
     disp_ctrl.animate()
     
     

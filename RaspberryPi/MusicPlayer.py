@@ -1,4 +1,3 @@
-import config
 
 import RPi.GPIO as GPIO
 import time
@@ -8,13 +7,25 @@ import tones
 stop_player = False
 
 class MusicPlayer(threading.Thread):
-    def __init__(self):
-        threading.Thread.__init__(self)
-        self.tempo = config.TEMPO
+    def __init__(self, music_fp, music_tempo, buzzer_pin):
+        global stop_player
         
-        music_file = open(config.MUSIC_FP, "r")
+        threading.Thread.__init__(self)
+        self.tempo = music_tempo
+        
+        try:
+            music_file = open(music_fp, "r")
+        except FileNotFoundError as e:
+            print("ERROR: Could not open text file to read music")
+            stop_player = True
+            
         self.notes = music_file.readline().rstrip().split(",")
         self.beat = music_file.readline().rstrip().split(",")
+        
+        if len(self.notes) != len(self.beat):
+            print("ERROR: Music text file formatted incorrectly")
+            stop_player = True
+            
         self.length = len(self.notes)
         
         music_file.close()
@@ -22,27 +33,52 @@ class MusicPlayer(threading.Thread):
         GPIO.setmode(GPIO.BCM)
         GPIO.setwarnings(False)
         
-        GPIO.setup(config.BUZZER_PIN, GPIO.OUT)
-        self.buzzer = GPIO.PWM(config.BUZZER_PIN, 440)
+        GPIO.setup(buzzer_pin, GPIO.OUT)
+        self.buzzer = GPIO.PWM(buzzer_pin, 440)
         
         
     def play_music(self):
         global stop_player
         
+        recording_state = False
+        recorded_startindex = -1
+        recorded_endindex = -1
+        
+        playback_state = False
+        
+        saved_index = -1
+        
         self.buzzer.start(50)
-        for i in range(0, self.length):
-            if stop_player:
-                return
+        i = 0
+        while i < self.length and not stop_player:
                 
-            if self.notes[i] == "P":
+            if self.notes[i] == "SR" and recording_state == False and playback_state == False:
                 self.buzzer.stop()
+                recording_state = True
+                recorded_startindex = i
+            elif self.notes[i] == "ER" and recording_state == True and playback_state == False:
+                self.buzzer.stop()
+                recording_state = False
+                recorded_endindex = i
+            elif self.notes[i] == "RP" and recording_state == False and playback_state == False:
+                self.buzzer.stop()
+                playback_state = True
+                saved_index = i + 1
+                i = recorded_startindex
+            elif self.notes[i] == "P":
+                self.buzzer.stop()  
             else:
                 self.buzzer.stop()
                 self.buzzer.ChangeFrequency(tones.tones[self.notes[i]])
                 self.buzzer.start(50)
 
             time.sleep(float(self.beat[i])*self.tempo)
+            
             i += 1
+            
+            if playback_state == True and i >= recorded_endindex:
+                playback_state = False
+                i = saved_index
         
         
     def cleanup(self):

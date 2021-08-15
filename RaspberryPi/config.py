@@ -6,7 +6,8 @@ BUTTON2_PIN = 6
 BUTTON3_PIN = 5
 BUTTON4_PIN = 25
 
-BUZZER_PIN = 14
+BUZZER1_PIN = 14
+BUZZER2_PIN = 15
 
 #Width and height in pixels of OLED display
 OLED_WIDTH = 128
@@ -25,7 +26,8 @@ SCREEN_COUNT = 6
 
 SAVE_FP = "saves/pet_save.csv"
 
-MUSIC_FP = "assets/music/overture.txt"
+MUSIC_FP1 = "assets/music/overture.txt"
+MUSIC_FP2 = "assets/music/overture1.txt"
 TEMPO = 2
 
 START_HUNGER = 50

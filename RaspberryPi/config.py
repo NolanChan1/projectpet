@@ -26,8 +26,8 @@ SCREEN_COUNT = 6
 
 SAVE_FP = "saves/pet_save.csv"
 
-MUSIC_FP1 = "assets/music/overture.txt"
-MUSIC_FP2 = "assets/music/overture1.txt"
+MUSIC_FP1 = "assets/music/stardew_overture0.txt"
+MUSIC_FP2 = "assets/music/stardew_overture1.txt"
 TEMPO = 2
 
 START_HUNGER = 50

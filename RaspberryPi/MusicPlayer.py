@@ -19,8 +19,17 @@ class MusicPlayer(threading.Thread):
             print("ERROR: Could not open text file to read music")
             stop_player = True
             
-        self.notes = music_file.readline().rstrip().split(",")
-        self.beat = music_file.readline().rstrip().split(",")
+        self.notes = []
+        self.beat = []
+        while True:
+            tmp_notes = music_file.readline().rstrip().split(",")
+            tmp_beat = music_file.readline().rstrip().split(",")
+            
+            if not tmp_notes:
+                break
+            else:
+                self.notes.extend(tmp_notes)
+                self.beat.extend(tmp_beat)
         
         if len(self.notes) != len(self.beat):
             print("ERROR: Music text file formatted incorrectly")

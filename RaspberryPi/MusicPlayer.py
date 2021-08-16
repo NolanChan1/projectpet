@@ -25,7 +25,7 @@ class MusicPlayer(threading.Thread):
             tmp_notes = music_file.readline().rstrip().split(",")
             tmp_beat = music_file.readline().rstrip().split(",")
             
-            if len(tmp_beat) <= 1:
+            if not tmp_beat or not tmp_beat[0].isnumeric():
                 break
             else:
                 self.notes.extend(tmp_notes)

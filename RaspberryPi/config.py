@@ -28,7 +28,7 @@ SAVE_FP = "saves/pet_save.csv"
 
 MUSIC_FP1 = "assets/music/stardew_overture0.txt"
 MUSIC_FP2 = "assets/music/stardew_overture1.txt"
-TEMPO = 2
+TEMPO = 2.5
 
 START_HUNGER = 50
 START_HAPPINESS = 50

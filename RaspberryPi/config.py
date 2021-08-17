@@ -35,7 +35,7 @@ TEMPO = 2.5
 LED_PIN = board.D18
 NUM_LED = 3
 LED_BRIGHTNESS = 0.2
-LED_DELAY = 0.1
+FRAME_DELAY = 0.1
 LED_FP = "assets/led_colours/led0.txt"
 
 START_HUNGER = 50

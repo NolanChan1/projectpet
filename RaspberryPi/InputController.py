@@ -62,6 +62,9 @@ def button3_pressed(channel):
     
     disp_ctrl.change_mood()
     led_ctrl.change_mood()
+    
+def button4_pressed(channel):
+    print("TEST3")
 
 class InputController:
     def __init__(self, dctrl, lctrl, save):
@@ -84,6 +87,8 @@ class InputController:
         GPIO.add_event_detect(config.BUTTON2_PIN, GPIO.FALLING, callback=button2_pressed, bouncetime=250)
         GPIO.setup(config.BUTTON3_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.add_event_detect(config.BUTTON3_PIN, GPIO.FALLING, callback=button3_pressed, bouncetime=250)
+        GPIO.setup(config.BUTTON4_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.add_event_detect(config.BUTTON4_PIN, GPIO.FALLING, callback=button4_pressed, bouncetime=250)
     
     def cleanup(self):
         GPIO.cleanup()

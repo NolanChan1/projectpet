@@ -16,7 +16,7 @@ class MusicPlayer(threading.Thread):
         try:
             music_file = open(music_fp, "r")
         except FileNotFoundError as e:
-            print("ERROR: Could not open text file to read music")
+            print("ERROR: Could not open text file to read music. File: " + str(music_fp) + " could not be found")
             stop_player = True
             
         self.notes = []
@@ -32,7 +32,7 @@ class MusicPlayer(threading.Thread):
                 self.beat.extend(tmp_beat)
         
         if len(self.notes) != len(self.beat):
-            print("ERROR: Music text file formatted incorrectly")
+            print("ERROR: Music text file " + str(music_fp) + " formatted incorrectly. There must be the same amount of 'notes' as number of 'beat values'")
             stop_player = True
             
         self.length = len(self.notes)
@@ -102,6 +102,4 @@ class MusicPlayer(threading.Thread):
         
         self.cleanup()
             
-    def stop_player(self):
-        self.stop = True
 

@@ -1,5 +1,7 @@
 #Configuration file for ProjectPet
 
+import board
+
 #BCM pin numbers for GPIO button and buzzer pins
 BUTTON1_PIN = 26
 BUTTON2_PIN = 6
@@ -29,6 +31,12 @@ SAVE_FP = "saves/pet_save.csv"
 MUSIC_FP1 = "assets/music/stardew_overture0.txt"
 MUSIC_FP2 = "assets/music/stardew_overture1.txt"
 TEMPO = 2.5
+
+LED_PIN = board.D21
+NUM_LED = 3
+LED_BRIGHTNESS = 0.2
+LED_DELAY = 0.1
+LED_FP = "assets/led_colours/led0.txt"
 
 START_HUNGER = 50
 START_HAPPINESS = 50

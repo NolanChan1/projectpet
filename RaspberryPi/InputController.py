@@ -5,6 +5,7 @@ import time
 import config
 
 disp_ctrl = None
+led_ctrl = None
 save_data = None
 
 def button1_pressed(channel):
@@ -57,15 +58,19 @@ def button2_pressed(channel):
     
 def button3_pressed(channel):
     global disp_ctrl
+    global led_ctrl
     
     disp_ctrl.change_mood()
+    led_ctrl.change_mood()
 
 class InputController:
-    def __init__(self, dctrl, save):
+    def __init__(self, dctrl, lctrl, save):
         global disp_ctrl
+        global led_ctrl
         global save_data
 
         disp_ctrl = dctrl
+        led_ctrl = lctrl
         save_data = save
         
         disp_ctrl.update_stats(save_data.get_curr_stats())

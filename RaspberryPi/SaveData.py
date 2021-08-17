@@ -1,5 +1,6 @@
-import pandas
 import config
+
+import pandas
 
 class SaveData:
     def __init__(self):

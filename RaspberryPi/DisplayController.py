@@ -4,8 +4,8 @@ from Screen import Screen
 import time
 import busio
 import board
-import adafruit_ssd1306
 
+import adafruit_ssd1306
 from PIL import Image, ImageDraw, ImageFont
 
 class DisplayController:
@@ -52,36 +52,7 @@ class DisplayController:
         self.oled_display.image(self.curr_screen)
         self.oled_display.show()
         
-        self.animation_frame += 1
-        
-    def animate(self):
-        animation_frame = 0
-        current_screen_num = -1
-        
-        while True:
-            # If screen changes, get a copy of the new screen
-            if current_screen_num != self.curr_screen_num:
-                current_screen = self.screens[self.curr_screen_num].screen_img.copy()
-                current_screen_num = self.curr_screen_num
-            
-            # Loop back to the first sprite frame if it reaches the end
-            if animation_frame >= self.animation_count:
-                animation_frame = 0
-
-            # Get current pet sprite frame and paste it to the current screen
-            current_frame = self.sprite_data.get_frame(self.curr_mood, animation_frame).copy()
-            if (current_screen_num % 2 == 0):
-                current_screen.paste(current_frame, box=(96,0))
-            else:
-                current_screen.paste(current_frame, box=(0,0))
-            
-            # Display the screen to the OLED display and then move onto the next animation frame
-            self.oled_display.image(current_screen)
-            self.oled_display.show()
-            animation_frame += 1
-            
-            time.sleep(self.frame_delay)
-            
+        self.animation_frame += 1  
     
     def cleanup(self):
         self.oled_display.fill(0)
@@ -99,7 +70,7 @@ class DisplayController:
     def change_mood(self):
         if self.curr_mood == 0:
             self.curr_mood = 1
-        else:
+        elif self.curr_mood == 1:
             self.curr_mood = 0
             
     def update_stats(self, stats):

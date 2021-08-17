@@ -1,8 +1,7 @@
-
-import RPi.GPIO as GPIO
-import time
-
 import config
+
+import time
+import RPi.GPIO as GPIO
 
 disp_ctrl = None
 led_ctrl = None

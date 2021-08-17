@@ -1,8 +1,8 @@
+import tones
 
-import RPi.GPIO as GPIO
 import time
 import threading
-import tones
+import RPi.GPIO as GPIO
 
 stop_player = False
 

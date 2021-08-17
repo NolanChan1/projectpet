@@ -67,14 +67,6 @@ class Screen:
                 
             for i in range(0, candybars):
                 self.screen_img.paste(misc_sprites[3], box=(32 + i*7, 24))
-            """
-            for i in range(0, filled_happybars):
-                self.screen_draw.ellipse((54 + i*7, 9, 59 + i*7, 14), outline=255, fill=255, width=1)
-                total_happybars -= 1
-                
-            for i in range(0, total_happybars):
-                self.screen_draw.ellipse((89 - i*7, 9, 94 - i*7, 14), outline=255, fill=0, width=1)
-            """
         elif screen_type == 1:
             saladbars = stats[2]
             candybars = stats[3]

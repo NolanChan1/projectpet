@@ -18,8 +18,8 @@ input_ctrl = None
 
 def main():
     global disp_ctrl
-    global input_ctrl
     global led_ctrl
+    global input_ctrl
 
     save = SaveData()
     i2c = busio.I2C(board.SCL, board.SDA)

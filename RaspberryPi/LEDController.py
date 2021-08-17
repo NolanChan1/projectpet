@@ -1,4 +1,3 @@
-
 import board
 import time
 import neopixel
@@ -73,34 +72,6 @@ class LEDController:
                 
         self.animation_frame += 1
             
-        
-    def light_led(self):
-        global stop_led
-        global led_mood
-        
-        i = 0
-        while i < len(self.normal_led) and not stop_led and led_mood == 0:
-            for j in range(0, self.led_count):
-                self.led_strip[j] = (int(self.normal_led[i][j][0]), int(self.normal_led[i][j][1]), int(self.normal_led[i][j][2]))
-                
-                self.led_strip.show()
-                i += 1
-                time.sleep(self.delay)
-            
-        k = 0
-        while k < len(self.happy_led) and not stop_led and led_mood == 1:
-            for j in range(0, self.led_count):
-                try:
-                    print(k)
-                    self.led_strip[j] = (int(self.happy_led[k][j][0]), int(self.happy_led[k][j][1]), int(self.happy_led[k][j][2]))
-                except IndexError as e:
-                    print(str(k) + "," + str(j))
-                self.led_strip.show()
-                k += 1
-                time.sleep(self.delay)
-                
-            
-    
     def cleanup(self):
         self.led_strip.fill((0,0,0))
         self.led_strip.show()

@@ -1,3 +1,5 @@
+# File containing conversion values from scientific pitch notation (SPN) to frequency values
+
 tones = {
     "B0": 31,
     "C1": 33,

@@ -4,10 +4,9 @@ import time
 import neopixel
 
 class LEDController:
-    def __init__(self, led_pin, num_led, led_brightness, led_delay, led_fp):
+    def __init__(self, led_pin, num_led, led_brightness, led_fp):
         self.led_strip = neopixel.NeoPixel(led_pin, num_led, brightness=led_brightness, auto_write=False)
         self.led_count = num_led
-        self.delay = led_delay
         self.curr_mood = 0
         
         try:
@@ -107,11 +106,9 @@ class LEDController:
         self.led_strip.show()
         
     def change_mood(self):
-        global led_mood
-        
-        if led_mood == 0:
-            led_mood = 1
-        elif led_mood == 1:
-            led_mood = 0
+        if self.curr_mood == 0:
+            self.curr_mood = 1
+        elif self.curr_mood == 1:
+            self.curr_mood = 0
             
         

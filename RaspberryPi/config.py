@@ -32,7 +32,7 @@ MUSIC_FP1 = "assets/music/stardew_overture0.txt"
 MUSIC_FP2 = "assets/music/stardew_overture1.txt"
 TEMPO = 2.5
 
-LED_PIN = board.D21
+LED_PIN = board.D18
 NUM_LED = 3
 LED_BRIGHTNESS = 0.2
 LED_DELAY = 0.1

@@ -26,12 +26,11 @@ class LEDController(threading.Thread):
         self.normal_led = []
         self.happy_led = []
         
-        txt_line = "NULL"
-        while not txt_line.contains("HAPPY:") or not len(txt_line) <= 1:
-            txt_line = led_file.readline().rstrip()
+        txt_line = led_file.readline().rstrip()
+        while not "HAPPY:" in txt_line and len(txt_line) > 1:
             led_values = txt_line.split(",")
             if len(led_values) != self.led_count*3:
-                print("ERROR: Text file containing LED colours formatted incorrectly. There should be: " + str(self.led_count*3) + "numbers on each line with each number on the same line separated by a comma.")
+                print("ERROR: Text file containing LED colours formatted incorrectly. There should be: " + str(self.led_count*3) + " numbers on each line with each number on the same line separated by a comma.")
                 stop_led = True
                 break
                 
@@ -40,12 +39,13 @@ class LEDController(threading.Thread):
                 tmp_list.append((led_values[i*3], led_values[i*3 + 1], led_values[i*3 + 2]))
                 
             self.normal_led.append(tmp_list)
-            
-        while not len(txt_line) <= 1:
             txt_line = led_file.readline().rstrip()
+            
+        txt_line = led_file.readline().rstrip()
+        while len(txt_line) > 1:
             led_values = txt_line.split(",")
-            if len(led_vales) != self.led_count*3:
-                print("ERROR: Text file containing LED colours formatted incorrectly. There should be: " + str(self.led_count*3) + "numbers on each line with each number on the same line separated by a comma.")
+            if len(led_values) != self.led_count*3:
+                print("ERROR: Text file containing LED colours formatted incorrectly. There should be: " + str(self.led_count*3) + " numbers on each line with each number on the same line separated by a comma.")
                 stop_led = True
                 break
                 
@@ -54,9 +54,10 @@ class LEDController(threading.Thread):
                 tmp_list.append((led_values[i*3], led_values[i*3 + 1], led_values[i*3 + 2]))
                 
             self.happy_led.append(tmp_list)
+            txt_line = led_file.readline().rstrip()
             
         led_file.close()
-        
+        print(self.happy_led)
         
         
     def light_led(self):
@@ -66,26 +67,33 @@ class LEDController(threading.Thread):
         i = 0
         while i < len(self.normal_led) and not stop_led and led_mood == 0:
             for j in range(0, self.led_count):
-                self.led_strip[j] = (self.normal_led[i][j][0], self.normal_led[i][j][1], self.normal_led[i][j][2])
+                self.led_strip[j] = (int(self.normal_led[i][j][0]), int(self.normal_led[i][j][1]), int(self.normal_led[i][j][2]))
                 
                 self.led_strip.show()
                 i += 1
                 time.sleep(self.delay)
             
-        i = 0
-        while i < len(self.happy_led) and not stop_led and led_mood == 1:
+        k = 0
+        while k < len(self.happy_led) and not stop_led and led_mood == 1:
             for j in range(0, self.led_count):
-                self.led_strip[j] = (self.normal_led[i][j][0], self.normal_led[i][j][1], self.normal_led[i][j][2])
-                
+                try:
+                    print(k)
+                    self.led_strip[j] = (int(self.happy_led[k][j][0]), int(self.happy_led[k][j][1]), int(self.happy_led[k][j][2]))
+                except IndexError as e:
+                    print(str(k) + "," + str(j))
                 self.led_strip.show()
-                i += 1
+                k += 1
                 time.sleep(self.delay)
                 
             
     
     def cleanup(self):
         self.led_strip.fill((0,0,0))
+        self.led_strip[0] = (255,0,0)
         self.led_strip.show()
+        print(self.delay)
+        print(self.led_count)
+        
     
     def run(self):
         global stop_led
